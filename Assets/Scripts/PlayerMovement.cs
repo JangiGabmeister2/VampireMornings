@@ -5,6 +5,8 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed = 8f;
 
+    private bool _facingRight = false;
+
     Rigidbody _rb => GetComponent<Rigidbody>();
     WithinLight _inLight => GetComponent<WithinLight>();
 
@@ -22,5 +24,19 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log("You are within the light. *pretend you are getting hurt*");
         }
+
+        if (_facingRight && horizontal < 0f || !_facingRight && horizontal > 0f)
+        {
+            Flip();
+        }
+    }
+
+    private void Flip()
+    {
+        _facingRight = !_facingRight;
+
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
     }
 }
