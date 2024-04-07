@@ -4,7 +4,7 @@ public class WithinLight : MonoBehaviour
 {
     public bool isWithinLight;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("Light"))
         {
@@ -12,7 +12,7 @@ public class WithinLight : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit(Collider collision)
     {
         if (collision.gameObject.CompareTag("Light"))
         {

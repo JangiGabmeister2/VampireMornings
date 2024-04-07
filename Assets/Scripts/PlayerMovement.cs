@@ -5,7 +5,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed = 8f;
 
-    Rigidbody2D _rb => GetComponent<Rigidbody2D>();
+    Rigidbody _rb => GetComponent<Rigidbody>();
     WithinLight _inLight => GetComponent<WithinLight>();
 
     float horizontal => Input.GetAxisRaw("Horizontal");
@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        Vector3 moveDir = transform.right * horizontal + transform.up * vertical;
+        Vector3 moveDir = transform.right * horizontal + transform.forward * vertical;
         moveDir *= _moveSpeed * Time.deltaTime;
 
         _rb.velocity = moveDir;
