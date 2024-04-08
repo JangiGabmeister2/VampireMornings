@@ -26,7 +26,7 @@ public class CameraSwitchManager : MonoBehaviour
             if (cam.playerInView)
             {
                 Vector3 _newPosition =
-                    new Vector3(cam.transform.position.x, _mainCamera.transform.position.y, cam.transform.position.z - 10);
+                    new Vector3(cam.transform.position.x, _mainCamera.transform.position.y, cam.transform.position.z - 20);
 
                 _mainCamera.transform.position = Vector3.Lerp(_mainCamera.transform.position, _newPosition, _lerpTime);
                 _mainCamera.orthographicSize = Mathf.Lerp(_mainCamera.orthographicSize, cam.size, _lerpTime);
