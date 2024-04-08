@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed = 8f;
+    [SerializeField] Transform playerSprite;
 
     private bool _facingRight = false;
 
@@ -35,8 +36,8 @@ public class PlayerMovement : MonoBehaviour
     {
         _facingRight = !_facingRight;
 
-        Vector3 scale = transform.localScale;
+        Vector3 scale = playerSprite.localScale;
         scale.x *= -1;
-        transform.localScale = scale;
+        playerSprite.localScale = scale;
     }
 }
