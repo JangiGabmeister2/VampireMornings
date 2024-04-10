@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[RequireComponent(typeof(WithinLight))]
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed = 8f;
@@ -10,7 +9,6 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 _moveDirection = Vector3.zero;
 
     Rigidbody _rb => GetComponent<Rigidbody>();
-    WithinLight _inLight => GetComponent<WithinLight>();
 
     float horizontal => Input.GetAxisRaw("Horizontal");
     float vertical => Input.GetAxisRaw("Vertical");
@@ -24,11 +22,6 @@ public class PlayerMovement : MonoBehaviour
     {
         _moveDirection = transform.right * horizontal + transform.forward * vertical;
         _moveDirection *= _moveSpeed * Time.deltaTime;
-
-        if (_inLight.isWithinLight)
-        {
-            Debug.Log("You are within the light. *pretend you are getting hurt*");
-        }
 
         if (_facingRight && horizontal < 0f || !_facingRight && horizontal > 0f)
         {
