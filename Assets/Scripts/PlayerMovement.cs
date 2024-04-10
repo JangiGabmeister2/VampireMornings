@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody _rb => GetComponent<Rigidbody>();
 
     float horizontal => Input.GetAxisRaw("Horizontal");
-    float vertical => Input.GetAxisRaw("Vertical");
+    float vertical => Input.GetAxisRaw("Vertical") * 2;
 
     private void Update()
     {
