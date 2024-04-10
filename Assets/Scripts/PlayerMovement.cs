@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Transform playerSprite;
 
     private bool _facingRight = false;
+    private Vector3 _moveDirection = Vector3.zero;
 
     Rigidbody _rb => GetComponent<Rigidbody>();
     WithinLight _inLight => GetComponent<WithinLight>();
@@ -16,10 +17,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        Vector3 moveDir = transform.right * horizontal + transform.forward * vertical;
-        moveDir *= _moveSpeed * Time.deltaTime;
+        _rb.velocity = _moveDirection;
+    }
 
-        _rb.velocity = moveDir;
+    private void FixedUpdate()
+    {
+        _moveDirection = transform.right * horizontal + transform.forward * vertical;
+        _moveDirection *= _moveSpeed * Time.deltaTime;
 
         if (_inLight.isWithinLight)
         {
